@@ -14,6 +14,7 @@ plugins {
     id 'io.spring.dependency-management' version "1.0.6.RELEASE"
     id 'idea'
     id 'eclipse'
+    id "org.sonarqube" version "2.6"
 }
 
 group 'ru.innopolis.stc.springtest'
