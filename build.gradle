@@ -15,6 +15,7 @@ plugins {
     id 'idea'
     id 'eclipse'
     id "org.sonarqube" version "2.6"
+    id 'jacoco'
 }
 
 group 'ru.innopolis.stc.springtest'
@@ -28,9 +29,22 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.1.0-M1'
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     compile group: 'com.github.jsimone', name: 'webapp-runner', version: '9.0.11.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.22.0'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpDir = file("$buildDir/jacoco/classpathdumps")
+    }
 }
