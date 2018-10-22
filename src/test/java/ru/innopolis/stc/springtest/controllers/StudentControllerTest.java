@@ -30,7 +30,7 @@ class StudentControllerTest {
 
     @Test
     void addStudent() {
-        when(student.getAge()).thenReturn(5);
+        when(student.getAge()).thenReturn(15);
         when(student.getId()).thenReturn(1);
         when(student.getName()).thenReturn("Vasya");
         when(model.addAttribute(any())).thenReturn(model);
